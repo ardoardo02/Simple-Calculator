@@ -13,7 +13,13 @@ namespace SkilvulLearning
             Console.WriteLine("Press 4 for Division");
             Console.WriteLine();
 
-            int menu = int.Parse(Console.ReadLine());
+            int menu;
+
+            if (!int.TryParse(Console.ReadLine(), out menu) || (menu < 1 || menu > 4))
+            {
+                Console.WriteLine("Invalid input");
+                return;
+            }
 
             Console.WriteLine("Enter 1st input");
             float num1 = float.Parse(Console.ReadLine());
@@ -28,10 +34,7 @@ namespace SkilvulLearning
                     (menu == 4) ? Bagi(num1, num2) :
                     0.0f;
 
-            if (hasil == 0.0f)
-                Console.WriteLine("Invalid input");
-            else
-                Console.WriteLine($"The result is {hasil}");
+            Console.WriteLine($"The result is {hasil}");
         }
 
         static float Tambah(float a, float b)
