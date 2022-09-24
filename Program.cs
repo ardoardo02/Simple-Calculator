@@ -22,17 +22,26 @@ namespace SkilvulLearning
             }
 
             Console.WriteLine("Enter 1st input");
-            float num1 = float.Parse(Console.ReadLine());
+            float num1;
+            if (!float.TryParse(Console.ReadLine(), out num1))
+            {
+                Console.WriteLine("Invalid input");
+                return;
+            }
 
             Console.WriteLine("Enter 2nd input");
-            float num2 = float.Parse(Console.ReadLine());
+            float num2;
+            if (!float.TryParse(Console.ReadLine(), out num2))
+            {
+                Console.WriteLine("Invalid input");
+                return;
+            }
 
             float hasil;
             hasil = (menu == 1) ? Tambah(num1, num2) :
                     (menu == 2) ? Kurang(num1, num2) :
                     (menu == 3) ? Kali(num1, num2) :
-                    (menu == 4) ? Bagi(num1, num2) :
-                    0.0f;
+                    Bagi(num1, num2);
 
             Console.WriteLine($"The result is {hasil}");
         }
